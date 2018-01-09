@@ -1,0 +1,25 @@
+version: '2'
+services:
+ mongo_db:
+  environment:
+   - MONGO_INITDB_ROOT_USERNAME=admin
+   - MONGO_INITDB_ROOT_PASSWORD=j2DE3j10EOpe9475
+  image: mongo 
+  ports:
+   - 27017:27017
+ qtum_insight:
+  image: inklabsfoundation/qtum-insight-api
+  ports:
+   - 3001:3001
+   - 3888:3888
+   - 3889:3889
+   - 13888:13888
+   - 13889:13889
+  environment:
+   - MONGO_HOST="mongo_db"
+   - MONGO_PORT=27017
+   - LOCAL_HOST="qtum_insight"
+  volumes:
+   - ./data:/work/qtum-api/data
+  depends_on:
+   - mongo_db

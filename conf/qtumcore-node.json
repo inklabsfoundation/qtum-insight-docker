@@ -1,0 +1,29 @@
+{
+  "network": "livenet",
+  "port": 3001,
+  "services": [
+    "qtumd",
+    "qtum-insight-api",
+    "web"
+  ],
+  "servicesConfig": {
+    "qtum-insight-api": {
+	"db": {
+	  "user":"admin",
+	  "password":"j2DE3j10EOpe9475",
+	  "host":${MONGO_HOST},
+	  "port":${MONGO_PORT},
+	  "database":"admin"
+	},
+	"erc20Config": {
+	  "updateFromBlockHeight": 0
+	}
+    },
+    "qtumd":{
+	"spawn": {
+        "datadir": "./data",
+        "exec": "/usr/local/bin/qtumd"
+      }
+    }
+  }
+}
